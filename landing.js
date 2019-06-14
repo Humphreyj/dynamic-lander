@@ -67,8 +67,9 @@ if ('geolocation' in navigator) {
         } //get weather
 
         function updateWeather(data) {
+            let temperature = Math.floor(data.main.temp)
 
-            temp.innerText = Math.floor(data.main.temp) ;
+            temp.innerText = `${temperature} `;
             condition.innerText = data.weather[0].main;
         }
         getWeather();
