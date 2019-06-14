@@ -1,0 +1,72 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 100vh;
+	width: 100%;
+	color: black;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.main {
+	background-color: rgba(0%, 0%, 0%, .4);
+	padding: 20px;
+	min-width: 30rem;
+}
+
+#time {
+	font-size: 8rem;
+}
+
+.quote-box {
+	margin-bottom: 2rem;
+}
+
+
+
+h1 {
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+h2 {
+	margin-bottom: 0.5rem;
+
+	
+}
+
+.local-weather {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	margin-top: 1rem;
+}
+
+.crypto-price {
+	display: flex;
+	width: 80%;
+	margin: auto;
+	justify-content: space-around;
+	margin-top: 1rem;
+	background-color: rgba(229, 224, 224, .5);
+	color: #111;
+	text-shadow: none;
+}
+
+@media(max-width: 700px) {
+	#time {
+		font-size: 6rem;
+		
+	}
+}
