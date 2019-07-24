@@ -28,6 +28,10 @@ body {
 #time {
 	font-size: 8rem;
 }
+
+.crypto-price {
+	padding: 2px 0px 2px 0px;
+}
 .price::before {
 	content: '$';
 }
@@ -54,6 +58,10 @@ h2 {
 	width: 100%;
 	justify-content: space-around;
 	margin-top: 1rem;
+}
+
+.temp-container {
+	display: flex;
 }
 
 .crypto-price {

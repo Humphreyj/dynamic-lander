@@ -1,15 +1,15 @@
 //DOM Elements
 
 const time = document.getElementById('time'),
-	quote = document.getElementById('quote'),
-	author = document.getElementById('author'),
+    quote = document.getElementById('quote'),
+    author = document.getElementById('author'),
     greeting = document.getElementById('greeting'),
     name = document.getElementById('name'),
     place = document.getElementById('location'),
     temp = document.getElementById('temp'),
     condition = document.getElementById('condition')
 focus = document.getElementById('focus'),
-btcPrice = document.getElementById('btcPrice'),ethPrice = document.getElementById('ethPrice');
+    btcPrice = document.getElementById('btcPrice'), ethPrice = document.getElementById('ethPrice');
 
 
 //you can put a comma after a declaration to declare multiple variables at once.
@@ -17,11 +17,12 @@ btcPrice = document.getElementById('btcPrice'),ethPrice = document.getElementByI
 //get quote
 
 function getQuote() {
-	axios.get('https://thesimpsonsquoteapi.glitch.me/quotes').then(function(res){
-		console.log(res.data);
-		quote.innerText = res.data[0].quote;
-		author.innerText = res.data[0].character;
-	})
+    axios.get('https://thesimpsonsquoteapi.glitch.me/quotes').then(function(res) {
+        console.log(res.data);
+        let quoteAuthor = res.data[0].character;
+        quote.innerText = res.data[0].quote;
+        author.innerText = `- ${quoteAuthor}`
+    })
 }
 getQuote();
 
@@ -30,7 +31,7 @@ getQuote();
 //GeoLocation
 const API_KEY = '3ec8de42bcc8a44738c4c555ced85ebe'
 const geoCode_API_KEY = 'AIzaSyCUVZjVGcaXOpx_9L5qQ-3sGhDYVpQ7U4w',
-	  coin_API_KEY = 'b11da64dda6738ee93296df31ad2d9e889f1f8777923eee55ccb14229e8d17fe'
+    coin_API_KEY = 'b11da64dda6738ee93296df31ad2d9e889f1f8777923eee55ccb14229e8d17fe'
 
 if ('geolocation' in navigator) {
     //console.log('available')
@@ -46,8 +47,8 @@ if ('geolocation' in navigator) {
                 console.log(res.data)
                 let city = res.data.results[6].address_components[1].long_name;
                 let state = res.data.results[6].address_components[3].long_name;
-               // console.log(city)
-               // console.log(state)
+                // console.log(city)
+                // console.log(state)
 
                 function updateLocation(data) {
                     place.innerText = `${city}, ${state}`;
@@ -69,7 +70,7 @@ if ('geolocation' in navigator) {
         function updateWeather(data) {
             let temperature = Math.floor(data.main.temp)
 
-            temp.innerText = `${temperature} `;
+            temp.innerHTML = `${temperature} &deg;`;
             condition.innerText = data.weather[0].main;
         }
         getWeather();
@@ -85,15 +86,15 @@ if ('geolocation' in navigator) {
 
 //crypto price API call
 function getCryptoPrice() {
-	axios.get(`https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR&api_key=${coin_API_KEY}`).then(function(res){
-		console.log(res.data);
-		btcPrice.innerText = res.data.USD;
-	})//gets btc price
+    axios.get(`https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR&api_key=${coin_API_KEY}`).then(function(res) {
+        console.log(res.data);
+        btcPrice.innerText = res.data.USD;
+    }) //gets btc price
 
-	axios.get(`https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,EUR&api_key=${coin_API_KEY}`).then(function(res1){
-		console.log(res1.data);
-		ethPrice.innerText = res1.data.USD;
-	})//gets eth price
+    axios.get(`https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,EUR&api_key=${coin_API_KEY}`).then(function(res1) {
+        console.log(res1.data);
+        ethPrice.innerText = res1.data.USD;
+    }) //gets eth price
 
 }
 getCryptoPrice()
@@ -151,7 +152,7 @@ function setBgGreet() {
     } else {
         document.body.style.backgroundImage = 'url(./img/night.jpg)'
         document.body.style.color = 'white';
-        greeting.textContent = "Evening, "
+        greeting.textContent = "Good Evening, "
         document.getElementById("main").style.backgroundColor = 'transparent'
     }
 }
